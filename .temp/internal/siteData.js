@@ -75,82 +75,8 @@ export const siteData = {
       "relativePath": "README.md",
       "key": "v-994eef30",
       "path": "/",
-      "lastUpdated": "6 hours ago",
-      "lastUpdatedTimestamp": 1656752332000
-    },
-    {
-      "title": "面试题库",
-      "frontmatter": {},
-      "regularPath": "/algorithm/",
-      "relativePath": "algorithm/README.md",
-      "key": "v-12b1b555",
-      "path": "/algorithm/",
-      "headers": [
-        {
-          "level": 2,
-          "title": "js题库",
-          "slug": "js题库"
-        },
-        {
-          "level": 2,
-          "title": "vue2题库",
-          "slug": "vue2题库"
-        },
-        {
-          "level": 2,
-          "title": "vue3题库",
-          "slug": "vue3题库"
-        },
-        {
-          "level": 2,
-          "title": "小程序题库",
-          "slug": "小程序题库"
-        },
-        {
-          "level": 2,
-          "title": "业务需求理解",
-          "slug": "业务需求理解"
-        },
-        {
-          "level": 2,
-          "title": "前端常用优化",
-          "slug": "前端常用优化"
-        }
-      ],
-      "lastUpdated": "6 hours ago",
-      "lastUpdatedTimestamp": 1656752332000
-    },
-    {
-      "title": "前端积累",
-      "frontmatter": {},
-      "regularPath": "/accumulate/",
-      "relativePath": "accumulate/README.md",
-      "key": "v-7107e1ea",
-      "path": "/accumulate/",
-      "headers": [
-        {
-          "level": 2,
-          "title": "html",
-          "slug": "html"
-        },
-        {
-          "level": 2,
-          "title": "js",
-          "slug": "js"
-        },
-        {
-          "level": 2,
-          "title": "css",
-          "slug": "css"
-        },
-        {
-          "level": 2,
-          "title": "嗷嗷嗷",
-          "slug": "嗷嗷嗷"
-        }
-      ],
-      "lastUpdated": "6 hours ago",
-      "lastUpdatedTimestamp": 1656752332000
+      "lastUpdated": "22 minutes ago",
+      "lastUpdatedTimestamp": 1656774017000
     },
     {
       "title": "手把手教你使用 VuePress 搭建个人博客",
@@ -304,14 +230,88 @@ export const siteData = {
       "lastUpdatedTimestamp": 1656752332000
     },
     {
+      "title": "前端积累",
+      "frontmatter": {},
+      "regularPath": "/accumulate/",
+      "relativePath": "accumulate/README.md",
+      "key": "v-7107e1ea",
+      "path": "/accumulate/",
+      "headers": [
+        {
+          "level": 2,
+          "title": "html",
+          "slug": "html"
+        },
+        {
+          "level": 2,
+          "title": "js",
+          "slug": "js"
+        },
+        {
+          "level": 2,
+          "title": "css",
+          "slug": "css"
+        },
+        {
+          "level": 2,
+          "title": "嗷嗷嗷",
+          "slug": "嗷嗷嗷"
+        }
+      ],
+      "lastUpdated": "6 hours ago",
+      "lastUpdatedTimestamp": 1656752332000
+    },
+    {
+      "title": "面试题库",
+      "frontmatter": {},
+      "regularPath": "/algorithm/",
+      "relativePath": "algorithm/README.md",
+      "key": "v-12b1b555",
+      "path": "/algorithm/",
+      "headers": [
+        {
+          "level": 2,
+          "title": "js题库",
+          "slug": "js题库"
+        },
+        {
+          "level": 2,
+          "title": "vue2题库",
+          "slug": "vue2题库"
+        },
+        {
+          "level": 2,
+          "title": "vue3题库",
+          "slug": "vue3题库"
+        },
+        {
+          "level": 2,
+          "title": "小程序题库",
+          "slug": "小程序题库"
+        },
+        {
+          "level": 2,
+          "title": "业务需求理解",
+          "slug": "业务需求理解"
+        },
+        {
+          "level": 2,
+          "title": "前端常用优化",
+          "slug": "前端常用优化"
+        }
+      ],
+      "lastUpdated": "6 hours ago",
+      "lastUpdatedTimestamp": 1656752332000
+    },
+    {
       "title": "你",
       "frontmatter": {},
       "regularPath": "/others/",
       "relativePath": "others/README.md",
       "key": "v-3e9d102a",
       "path": "/others/",
-      "lastUpdated": "6 hours ago",
-      "lastUpdatedTimestamp": 1656752332000
+      "lastUpdated": "22 minutes ago",
+      "lastUpdatedTimestamp": 1656774017000
     }
   ],
   "themeConfig": {

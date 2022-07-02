@@ -21,16 +21,12 @@ export const routes = [
     redirect: "/"
   },
   {
-    name: "v-12b1b555",
-    path: "/algorithm/",
+    name: "v-3bb1a233",
+    path: "/guide.html",
     component: GlobalLayout,
     beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-12b1b555").then(next)
+      ensureAsyncComponentsLoaded("Layout", "v-3bb1a233").then(next)
     },
-  },
-  {
-    path: "/algorithm/index.html",
-    redirect: "/algorithm/"
   },
   {
     name: "v-7107e1ea",
@@ -45,12 +41,16 @@ export const routes = [
     redirect: "/accumulate/"
   },
   {
-    name: "v-3bb1a233",
-    path: "/guide.html",
+    name: "v-12b1b555",
+    path: "/algorithm/",
     component: GlobalLayout,
     beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-3bb1a233").then(next)
+      ensureAsyncComponentsLoaded("Layout", "v-12b1b555").then(next)
     },
+  },
+  {
+    path: "/algorithm/index.html",
+    redirect: "/algorithm/"
   },
   {
     name: "v-3e9d102a",
