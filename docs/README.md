@@ -16,19 +16,19 @@ footer: 李晓锋 | 一个想被富婆包养的练块程序员
 :tada: :100:
 
 ::: tip 提示
-this is a tip
+he is a single man
 :::
 
 ::: warning 注意
-this is a tip
+he is a doubi
 :::
 
 ::: danger 警告
-this is a tip
+he is danger
 :::
 
 ``` js
 <script>
-	console.log('Hello world')
+	console.log('welcome to my word~')
 </script>
 ```

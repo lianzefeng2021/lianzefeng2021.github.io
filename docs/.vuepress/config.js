@@ -1,25 +1,31 @@
+const plugins = require("./config/plugins/");
 module.exports = {
-  title: '晓锋空间',
-  description: '记录与分享',
-  head: [ // 注入到当前页面的 HTML <head> 中的标签
-    ['link', { rel: 'icon', href: '/images/photo.jpg' }],
-    ['link', { rel: 'manifest', href: '/images/photo.jpg' }],
-    ['link', { rel: 'apple-touch-icon', href: '/images/photo.jpg' }],
-    ['meta', { 'http-quiv': 'pragma', cotent: 'no-cache'}],
-    ['meta', { 'http-quiv': 'pragma', cotent: 'no-cache,must-revalidate'}],
-    ['meta', { 'http-quiv': 'expires', cotent: '0'}]
+  title: "晓锋空间",
+  // theme: require.resolve('../../'),
+  description: "记录与分享",
+
+  head: [
+    // 注入到当前页面的 HTML <head> 中的标签
+    ["link", { rel: "icon", href: "/images/favicon.ico" }],
+    ["link", { rel: "manifest", href: "/images/photo.jpg" }],
+    ["link", { rel: "apple-touch-icon", href: "/images/photo.jpg" }],
+    ["meta", { "http-quiv": "pragma", cotent: "no-cache" }],
+    ["meta", { "http-quiv": "pragma", cotent: "no-cache,must-revalidate" }],
+    ["meta", { "http-quiv": "expires", cotent: "0" }],
   ],
+  plugins,
   serviceWorker: true, // 是否开启 PWA
-  base: '/', // 部署到github相关的配置
+  base: "/", // 部署到github相关的配置
   markdown: {
-    lineNumbers: true // 代码块是否显示行号
+    lineNumbers: true, // 代码块是否显示行号
   },
   themeConfig: {
-    nav:[ // 导航栏配置
-      {text: '前端基础', link: '/accumulate/' },
-      {text: '面试题库', link: '/algorithm/'},
-      {text: '诗和远方', link: '/others/'},
-      {text: '联系晓锋', link: 'https://github.com/lianzefeng2021'}      
+    nav: [
+      // 导航栏配置
+      { text: "前端基础", link: "/accumulate/" },
+      { text: "面试题库", link: "/algorithm/" },
+      { text: "诗和远方", link: "/others/" },
+      { text: "联系晓锋", link: "https://github.com/lianzefeng2021" },
     ],
     // sidebar:{
     //   '/accumulate/': [
@@ -41,16 +47,16 @@ module.exports = {
     //       }
     //     ],
     //     '/algorithm/': [
-    //       '/algorithm/', 
+    //       '/algorithm/',
     //       {
     //         title: '第二组侧边栏下拉框的标题1',
     //         children: [
-    //           '/algorithm/' 
+    //           '/algorithm/'
     //         ]
     //       }
     //     ]
     // },
-    sidebar: 'auto', // 侧边栏配置
-    sidebarDepth: 2
-  }
+    sidebar: "auto", // 侧边栏配置
+    sidebarDepth: 2,
+  },
 };
