@@ -1,4 +1,5 @@
 // 不要忘了安装 moment
+// const { CountUp } = require("countup.js");
 const moment = require("moment");
 module.exports = [
   ["@vuepress/back-to-top"], // 返回顶部按钮
@@ -26,4 +27,17 @@ module.exports = [
     },
   ],
   ["vuepress-plugin-smooth-scroll"],
+  ["vuepress-plugin-auto-sidebar"],
+  // [
+  //   '@vuepress/plugin-register-components',
+  //   {
+  //     components: [
+  //       {
+  //         name: 'reco-home-page-one',
+  //         path: path.resolve(__dirname, './components/HomePageOne.vue')
+  //       }
+  //     ],
+  //     componentsDir: path.resolve(__dirname, './demo')
+  //   }
+  // ],
 ];

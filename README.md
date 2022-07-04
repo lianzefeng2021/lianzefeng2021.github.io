@@ -1,4 +1,8 @@
+# 热更新
+    "dev": "vuepress dev docs --temp .temp",
+
 # VuePress 快速上手
+
 
 ### 步骤一：git clone git@mobike.io:zhangyunchen/vuepress-devkit.git
 
