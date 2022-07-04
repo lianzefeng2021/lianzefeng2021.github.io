@@ -15,11 +15,15 @@ module.exports = {
         },
         {
           text: "js",
-          link: "/views/accumulate/es6/",
+          link: "/views/accumulate/js/",
         },
         {
           text: "css",
           link: "/views/accumulate/css/",
+        },
+        {
+          text: "es6",
+          link: "/views/accumulate/es6/",
         },
         {
           text: "html",
@@ -27,7 +31,7 @@ module.exports = {
         },
         {
           text: "网络基础",
-          link: "/views/accumulate/netword/",
+          link: "/views/accumulate/network/",
         },
       ],
     },
@@ -44,35 +48,17 @@ module.exports = {
     },
     { text: "联系晓锋", link: "https://github.com/lianzefeng2021" },
   ],
-  // sidebar:{
-  //   '/accumulate/': [
-  //       {
-  //         title: '前端积累',
-  //         children: [
-  //           '/accumulate/1.html',
-  //           '/accumulate/2.html',
-  //           '/accumulate/3.html',
-  //           '/accumulate/4.html',
-  //           '/accumulate/5.html',
-  //           '/accumulate/6.html',
-  //           '/accumulate/7.html',
-  //           '/accumulate/8.html',
-  //           '/accumulate/9.html',
-  //           '/accumulate/10.html',
-  //           '/accumulate/11.html',
-  //         ]
-  //       }
-  //     ],
-  //     '/algorithm/': [
-  //       '/algorithm/',
-  //       {
-  //         title: '第二组侧边栏下拉框的标题1',
-  //         children: [
-  //           '/algorithm/'
-  //         ]
-  //       }
+  // sidebar: [
+  //   {
+  //     title: 'Group 1',   // 必要的
+  //     path: '/views/accumulate/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+  //     collapsable: false, // 可选的, 默认值是 true,
+  //     sidebarDepth: 1,    // 可选的, 默认值是 1
+  //     children: [
+  //       '/', '/vue2/', '/vue3/', '/es6/'
   //     ]
-  // },
+  //   }
+  // ]
   sidebar: "auto", // 侧边栏配置
-  sidebarDepth: 2,
+  sidebarDepth: 2, // 侧栏标题深度，默认只显示到2级标题 ##
 };
