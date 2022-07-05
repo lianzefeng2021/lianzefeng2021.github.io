@@ -2,51 +2,55 @@ module.exports = {
   nav: [
     // 导航栏配置
     {
-      text: "前端基础",
-      link: "/views/accumulate/",
+      text: '前端基础',
+      link: '/views/accumulate/',
       items: [
         {
-          text: "vue2",
-          link: "/views/accumulate/vue2/",
+          text: 'js',
+          link: '/views/accumulate/js/'
         },
         {
-          text: "vue3",
-          link: "/views/accumulate/vue3/",
+          text: 'css',
+          link: '/views/accumulate/css/'
         },
         {
-          text: "js",
-          link: "/views/accumulate/js/",
+          text: 'html',
+          link: '/views/accumulate/html/'
         },
         {
-          text: "css",
-          link: "/views/accumulate/css/",
+          text: 'es6',
+          link: '/views/accumulate/es6/'
         },
         {
-          text: "es6",
-          link: "/views/accumulate/es6/",
+          text: '网络基础',
+          link: '/views/accumulate/network/'
         },
         {
-          text: "html",
-          link: "/views/accumulate/html/",
+          text: 'git',
+          link: '/views/accumulate/git/'
         },
         {
-          text: "网络基础",
-          link: "/views/accumulate/network/",
+          text: 'vue2',
+          link: '/views/accumulate/vue2/'
         },
-      ],
+        {
+          text: 'vue3',
+          link: '/views/accumulate/vue3/'
+        }
+      ]
     },
-    { text: "面试题库", link: "/views/interview/" },
+    { text: '面试题库', link: '/views/interview/' },
     {
-      text: "组件展示",
-      link: "/others/",
+      text: '我的组件',
+      link: '/others/',
       items: [
         {
-          text: "countjs",
-          link: "/views/others/countup",
-        },
-      ],
+          text: 'countjs',
+          link: '/views/others/countup'
+        }
+      ]
     },
-    { text: "联系晓锋", link: "https://github.com/lianzefeng2021" },
+    { text: '联系晓锋', link: 'https://github.com/lianzefeng2021' }
   ],
   // sidebar: [
   //   {
@@ -59,6 +63,6 @@ module.exports = {
   //     ]
   //   }
   // ]
-  sidebar: "auto", // 侧边栏配置
-  sidebarDepth: 2, // 侧栏标题深度，默认只显示到2级标题 ##
-};
+  sidebar: 'auto', // 侧边栏配置
+  sidebarDepth: 2 // 侧栏标题深度，默认只显示到2级标题 ##
+}
