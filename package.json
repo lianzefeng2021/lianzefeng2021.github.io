@@ -24,6 +24,8 @@
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.9.7",
     "@vuepress/plugin-register-components": "^1.9.7",
+    "sass": "^1.53.0",
+    "sass-loader": "^7.3.1",
     "vuepress-plugin-auto-sidebar": "^2.3.2"
   }
 }
