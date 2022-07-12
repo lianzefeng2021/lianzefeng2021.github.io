@@ -1,5 +1,6 @@
 const plugins = require("./config/plugins/");
 const themeConfig = require("./config/themeConfig/");
+
 module.exports = {
   title: "晓锋空间",
   // theme: require.resolve('../../'),

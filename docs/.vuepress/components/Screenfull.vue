@@ -1,6 +1,7 @@
 <template>
   <div>
-    <svg-icon :icon-class="isFullscreen?'exit-fullscreen':'fullscreen'" @click="click" />
+    <i :icon-class="isFullscreen?'exit-fullscreen':'fullscreen'" @click="click">点我~</i>
+
   </div>
 </template>
 

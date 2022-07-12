@@ -1,6 +1,9 @@
 // 不要忘了安装 moment
 // const { CountUp } = require("countup.js");
 const moment = require("moment");
+// const screenfull = require("screenfull");
+// import screenfull from 'screenfull'
+
 module.exports = [
   ["@vuepress/back-to-top"], // 返回顶部按钮
   [
