@@ -28,6 +28,7 @@ module.exports = [
   ],
   ["vuepress-plugin-smooth-scroll"],
   ["vuepress-plugin-auto-sidebar"],
+  ["screenfull"],
   // [
   //   '@vuepress/plugin-register-components',
   //   {

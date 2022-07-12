@@ -17,6 +17,7 @@
     "element-plus": "^2.2.8",
     "element-ui": "^2.15.9",
     "moment": "^2.29.3",
+    "screenfull": "^6.0.2",
     "vuepress": "^1.9.7",
     "vuepress-plugin-md-enhance": "^1.30.0",
     "vuepress-plugin-smooth-scroll": "0.0.10"
