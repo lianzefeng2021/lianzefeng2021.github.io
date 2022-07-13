@@ -7,7 +7,7 @@ elements-UI 大图 预览功能
 个人感觉功能也不错，支持大图轮播预览效果，拖拽图片，旋转，缩放等
 :::
 
-<el-image ref="preview" :src='img' :preview-src-list="imageList"/>
+<el-image ref="preview" :src='img' :preview-src-list="imageList" style="width:200px"/>
 
 ####
 
@@ -21,11 +21,11 @@ elements-UI 大图 预览功能
 export default {
     data() {
         return {
-      url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+      url: '/images/before.jpg',
       srcList: [
-        'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
-        'https://fuss10.elemecdn.com/8/27/f01c15bb73e1ef3793e64e6b7bbccjpeg.jpeg',
-        'https://fuss10.elemecdn.com/1/8e/aeffeb4de74e2fde4bd74fc7b4486jpeg.jpeg'
+        '/images/before.jpg',
+        '/images/before.jpg',
+        '/images/before.jpg'
       ],
         }
     },
@@ -47,12 +47,12 @@ export default {
     data() {
      return {
       showViewer: true,
-      url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
+      url: '/images/before.jpg',
       srcList: [
-        'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
-        'https://fuss10.elemecdn.com/8/27/f01c15bb73e1ef3793e64e6b7bbccjpeg.jpeg',
-        'https://fuss10.elemecdn.com/1/8e/aeffeb4de74e2fde4bd74fc7b4486jpeg.jpeg'
-      ],
+        '/images/before.jpg',
+        '/images/before.jpg',
+        '/images/before.jpg'
+      ]
      }
     },
     methods: {
@@ -72,7 +72,7 @@ export default {
     data() {
         return {
             img: 'https://lianzefeng2021.github.io/images/photo.jpg',
-            imageList: ['https://lianzefeng2021.github.io/images/photo.jpg']
+            imageList: ['/images/before.jpg']
         }
     },
     methods: {
