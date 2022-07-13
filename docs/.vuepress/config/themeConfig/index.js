@@ -47,7 +47,11 @@ module.exports = {
         {
           text: 'countjs',
           link: '/views/others/countup'
-        }
+        },
+        {
+          text: 'screenfull',
+          link: '/views/others/screenfull'
+        },
       ]
     },
     { text: '联系晓锋', link: 'https://github.com/lianzefeng2021' }
