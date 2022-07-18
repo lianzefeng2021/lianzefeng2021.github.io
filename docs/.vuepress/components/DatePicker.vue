@@ -23,6 +23,8 @@
 </template>
 
 <script>
+    var dayjs = require('dayjs')
+    //import dayjs from 'dayjs' // ES 2015
   export default {
   name: "DatePicker",
     data() {
@@ -51,12 +53,12 @@
             },
             {
                 validator: (rule, value, callback) => {
-                // if (!this.validatorLimitDateRang(15, value)) {
-                //     callback(new Error('最多可选择15天'))
-                // } else {
-                //     callback()
-                // }
-                callback()
+                if (!this.validatorLimitDateRang(15, value)) {
+                    callback(new Error('最多可选择15天'))
+                } else {
+                    callback()
+                }
+                // callback()
                 },
                 trigger: 'blur'
             }
@@ -75,6 +77,12 @@
                 }
             })
         },
+        validatorLimitDateRang (days, dateRang) {
+            const legalRang = days * 24 * 3600 * 1000
+            const currentRang = dayjs(dateRang[1]).valueOf() - dayjs(dateRang[0]).valueOf()
+            if (currentRang > legalRang) return false
+            return true
+        }
     }
   }
 </script>
