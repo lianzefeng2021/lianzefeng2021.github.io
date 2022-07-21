@@ -22,6 +22,10 @@ module.exports = {
           link: '/views/accumulate/es6/'
         },
         {
+          text: 'ts',
+          link: '/views/accumulate/ts/'
+        },
+        {
           text: '网络基础',
           link: '/views/accumulate/network/'
         },
