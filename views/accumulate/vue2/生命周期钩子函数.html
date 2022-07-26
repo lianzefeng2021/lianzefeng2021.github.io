@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vue2 生命周期钩子函数 | 晓锋空间</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="manifest" href="/images/photo.jpg">
+    <link rel="apple-touch-icon" href="/images/photo.jpg">
+    <meta name="description" content="记录与分享">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    
+    <link rel="preload" href="/assets/css/0.styles.65bed2ef.css" as="style"><link rel="preload" href="/assets/js/app.468e9172.js" as="script"><link rel="preload" href="/assets/js/2.d6c02311.js" as="script"><link rel="preload" href="/assets/js/48.b8ca804f.js" as="script"><link rel="prefetch" href="/assets/js/10.04953a73.js"><link rel="prefetch" href="/assets/js/11.bcc09644.js"><link rel="prefetch" href="/assets/js/12.e8173128.js"><link rel="prefetch" href="/assets/js/13.87f0bbd8.js"><link rel="prefetch" href="/assets/js/14.a6408325.js"><link rel="prefetch" href="/assets/js/15.bf669ea1.js"><link rel="prefetch" href="/assets/js/16.0b7f863a.js"><link rel="prefetch" href="/assets/js/17.163cf4c3.js"><link rel="prefetch" href="/assets/js/18.465c4546.js"><link rel="prefetch" href="/assets/js/19.7c381160.js"><link rel="prefetch" href="/assets/js/20.f38121d9.js"><link rel="prefetch" href="/assets/js/21.d3ad1174.js"><link rel="prefetch" href="/assets/js/22.a1467f2f.js"><link rel="prefetch" href="/assets/js/23.b4a41d97.js"><link rel="prefetch" href="/assets/js/24.95f69b26.js"><link rel="prefetch" href="/assets/js/25.ac495c72.js"><link rel="prefetch" href="/assets/js/26.3f9197df.js"><link rel="prefetch" href="/assets/js/27.73f55c6e.js"><link rel="prefetch" href="/assets/js/28.a396bcb9.js"><link rel="prefetch" href="/assets/js/29.00603ed5.js"><link rel="prefetch" href="/assets/js/3.050dc602.js"><link rel="prefetch" href="/assets/js/30.6a6a5067.js"><link rel="prefetch" href="/assets/js/31.747c9437.js"><link rel="prefetch" href="/assets/js/32.b606e230.js"><link rel="prefetch" href="/assets/js/33.ee7ab35e.js"><link rel="prefetch" href="/assets/js/34.741cee7a.js"><link rel="prefetch" href="/assets/js/35.5de6e65e.js"><link rel="prefetch" href="/assets/js/36.29fc7d30.js"><link rel="prefetch" href="/assets/js/37.bf19b45b.js"><link rel="prefetch" href="/assets/js/38.68b9d772.js"><link rel="prefetch" href="/assets/js/39.261f13ec.js"><link rel="prefetch" href="/assets/js/4.ab8d5e2d.js"><link rel="prefetch" href="/assets/js/40.28e11dbb.js"><link rel="prefetch" href="/assets/js/41.44b1d9c7.js"><link rel="prefetch" href="/assets/js/42.fa7ece18.js"><link rel="prefetch" href="/assets/js/43.8c722d88.js"><link rel="prefetch" href="/assets/js/44.2b4814e2.js"><link rel="prefetch" href="/assets/js/45.3f5d68b4.js"><link rel="prefetch" href="/assets/js/46.b4eeedb4.js"><link rel="prefetch" href="/assets/js/47.fab25003.js"><link rel="prefetch" href="/assets/js/49.38649c41.js"><link rel="prefetch" href="/assets/js/5.4f6139fc.js"><link rel="prefetch" href="/assets/js/50.99187549.js"><link rel="prefetch" href="/assets/js/51.b3ecdcd1.js"><link rel="prefetch" href="/assets/js/52.78f78bc1.js"><link rel="prefetch" href="/assets/js/53.7c4811a2.js"><link rel="prefetch" href="/assets/js/54.db991d23.js"><link rel="prefetch" href="/assets/js/55.3ddfcccd.js"><link rel="prefetch" href="/assets/js/56.16f0d67f.js"><link rel="prefetch" href="/assets/js/57.2101b112.js"><link rel="prefetch" href="/assets/js/58.23f893e3.js"><link rel="prefetch" href="/assets/js/59.baec5ba2.js"><link rel="prefetch" href="/assets/js/6.5db35803.js"><link rel="prefetch" href="/assets/js/60.c0c588e1.js"><link rel="prefetch" href="/assets/js/61.4b51a163.js"><link rel="prefetch" href="/assets/js/62.772cf64f.js"><link rel="prefetch" href="/assets/js/63.bf0b093d.js"><link rel="prefetch" href="/assets/js/64.53e1dfc3.js"><link rel="prefetch" href="/assets/js/65.c2aa01d8.js"><link rel="prefetch" href="/assets/js/66.8d6d1feb.js"><link rel="prefetch" href="/assets/js/67.cc9121e3.js"><link rel="prefetch" href="/assets/js/7.c39535f8.js"><link rel="prefetch" href="/assets/js/8.2f483ee6.js"><link rel="prefetch" href="/assets/js/9.3cb083bb.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.65bed2ef.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">晓锋空间</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端基础" class="dropdown-title"><span class="title">前端基础</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端基础" class="mobile-dropdown-title"><span class="title">前端基础</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/views/accumulate/js/" class="nav-link">
+    js
+  </a></li><li class="dropdown-item"><!----> <a href="/views/accumulate/css/" class="nav-link">
+    css
+  </a></li><li class="dropdown-item"><!----> <a href="/views/accumulate/html/" class="nav-link">
+    html
+  </a></li><li class="dropdown-item"><!----> <a href="/views/accumulate/es6/" class="nav-link">
+    es6
+  </a></li><li class="dropdown-item"><!----> <a href="/views/accumulate/ts/" class="nav-link">
+    ts
+  </a></li><li class="dropdown-item"><!----> <a href="/views/accumulate/network/" class="nav-link">
+    网络基础
+  </a></li><li class="dropdown-item"><!----> <a href="/views/accumulate/git/" class="nav-link">
+    git
+  </a></li><li class="dropdown-item"><!----> <a href="/views/accumulate/vue2/" class="nav-link router-link-active">
+    vue2
+  </a></li><li class="dropdown-item"><!----> <a href="/views/accumulate/vue3/" class="nav-link">
+    vue3
+  </a></li></ul></div></div><div class="nav-item"><a href="/views/interview/" class="nav-link">
+    面试题库
+  </a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="我的组件" class="dropdown-title"><span class="title">我的组件</span> <span class="arrow down"></span></button> <button type="button" aria-label="我的组件" class="mobile-dropdown-title"><span class="title">我的组件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/views/others/countup.html" class="nav-link">
+    countjs
+  </a></li><li class="dropdown-item"><!----> <a href="/views/others/screenfull.html" class="nav-link">
+    screenfull
+  </a></li></ul></div></div><div class="nav-item"><a href="https://github.com/lianzefeng2021" target="_blank" rel="noopener noreferrer" class="nav-link external">
+    联系晓锋
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端基础" class="dropdown-title"><span class="title">前端基础</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端基础" class="mobile-dropdown-title"><span class="title">前端基础</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/views/accumulate/js/" class="nav-link">
+    js
+  </a></li><li class="dropdown-item"><!----> <a href="/views/accumulate/css/" class="nav-link">
+    css
+  </a></li><li class="dropdown-item"><!----> <a href="/views/accumulate/html/" class="nav-link">
+    html
+  </a></li><li class="dropdown-item"><!----> <a href="/views/accumulate/es6/" class="nav-link">
+    es6
+  </a></li><li class="dropdown-item"><!----> <a href="/views/accumulate/ts/" class="nav-link">
+    ts
+  </a></li><li class="dropdown-item"><!----> <a href="/views/accumulate/network/" class="nav-link">
+    网络基础
+  </a></li><li class="dropdown-item"><!----> <a href="/views/accumulate/git/" class="nav-link">
+    git
+  </a></li><li class="dropdown-item"><!----> <a href="/views/accumulate/vue2/" class="nav-link router-link-active">
+    vue2
+  </a></li><li class="dropdown-item"><!----> <a href="/views/accumulate/vue3/" class="nav-link">
+    vue3
+  </a></li></ul></div></div><div class="nav-item"><a href="/views/interview/" class="nav-link">
+    面试题库
+  </a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="我的组件" class="dropdown-title"><span class="title">我的组件</span> <span class="arrow down"></span></button> <button type="button" aria-label="我的组件" class="mobile-dropdown-title"><span class="title">我的组件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/views/others/countup.html" class="nav-link">
+    countjs
+  </a></li><li class="dropdown-item"><!----> <a href="/views/others/screenfull.html" class="nav-link">
+    screenfull
+  </a></li></ul></div></div><div class="nav-item"><a href="https://github.com/lianzefeng2021" target="_blank" rel="noopener noreferrer" class="nav-link external">
+    联系晓锋
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Vue2</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/views/accumulate/vue2/" aria-current="page" class="sidebar-link">vue2简介</a></li><li><a href="/views/accumulate/vue2/$emit原理.html" class="sidebar-link">$emit 原理</a></li><li><a href="/views/accumulate/vue2/$nextTick().html" class="sidebar-link">this.$nextTick()</a></li><li><a href="/views/accumulate/vue2/$refs.html" class="sidebar-link">this.$refs 的使用</a></li><li><a href="/views/accumulate/vue2/vue3.html" class="sidebar-link">vue2</a></li><li><a href="/views/accumulate/vue2/vue实例选项顺序.html" class="sidebar-link">vue实例/选项书写顺序</a></li><li><a href="/views/accumulate/vue2/动态修改样式.html" class="sidebar-link">vue中根据某一变量动态改变html样式</a></li><li><a href="/views/accumulate/vue2/生命周期钩子函数.html" class="active sidebar-link">vue2 生命周期钩子函数</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/views/accumulate/vue2/组件实例写法及注意说明.html" class="sidebar-link">组件实例写法及注意说明</a></li><li><a href="/views/accumulate/vue2/组件间通讯.html" class="sidebar-link">组件间通讯</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue2-生命周期钩子函数"><a href="#vue2-生命周期钩子函数" class="header-anchor">#</a> vue2 生命周期钩子函数</h1> <ul><li>生命周期钩子 (按照它们被调用的顺序)</li></ul> <p>beforeCreate</p> <p>created</p> <p>beforeMount</p> <p>mounted</p> <p>beforeUpdate</p> <p>updated</p> <p><strong>activated</strong></p> <p><strong>deactivated</strong></p> <p>beforeDestroy</p> <p>destroyed</p> <blockquote><h3 id="beforecreate-创建前"><a href="#beforecreate-创建前" class="header-anchor">#</a> beforeCreate ( 创建前 )</h3> <p>vue实例创建前</p> <p>在实例初始化之后，数据观测和事件配置之前被调用，此时组件的选项对象还未创建，el 和 data 并未初始化，因此无法访问methods， data， computed等上的方法和数据。</p></blockquote> <blockquote><h3 id="created-创建后"><a href="#created-创建后" class="header-anchor">#</a> created ( 创建后 ）</h3> <p>实例已经创建完成之后被调用，在这一步，实例已完成以下配置：数据观测、属性和方法的运算，watch/event事件回调，完成了data 数据的初始化，el没有。 然而，挂在阶段还没有开始, $el属性目前不可见，这是一个常用的生命周期，因为你可以调用methods中的方法，改变data中的数据，并且修改可以通过vue的响应式绑定体现在页面上，，获取computed中的计算属性等等，通常我们可以在这里对实例进行预处理，也有一些童鞋喜欢在这里发ajax请求，值得注意的是，这个周期中是没有什么方法来对实例化过程进行拦截的，因此假如有某些数据必须获取才允许进入页面的话，并不适合在这个方法发请求，建议在组件路由钩子beforeRouteEnter中完成</p></blockquote> <blockquote><h3 id="beforemount-挂载前"><a href="#beforemount-挂载前" class="header-anchor">#</a> beforeMount ( 挂载前 )</h3> <p>挂在开始之前被调用，相关的render函数首次被调用（虚拟DOM），实例已完成以下的配置： 编译模板，把data里面的数据和模板生成html，完成了el和data 初始化，注意此时还没有挂在html到页面上。</p></blockquote> <blockquote><h3 id="mounted-挂载完成"><a href="#mounted-挂载完成" class="header-anchor">#</a> mounted ( 挂载完成 )</h3> <p>挂在完成，也就是模板中的HTML渲染到HTML页面中，此时一般可以做一些ajax操作，mounted只会执行一次。</p></blockquote> <blockquote><h3 id="beforeupdate-更新前"><a href="#beforeupdate-更新前" class="header-anchor">#</a> beforeUpdate （ 更新前 ）</h3> <p>在数据更新之前被调用，发生在虚拟DOM重新渲染和打补丁之前，可以在该钩子中进一步地更改状态，不会触发附加地重渲染过程</p></blockquote> <blockquote><h3 id="updated-更新后"><a href="#updated-更新后" class="header-anchor">#</a> updated（更新后）</h3> <p>在由于数据更改导致地虚拟DOM重新渲染和打补丁只会调用，调用时，组件DOM已经更新，所以可以执行依赖于DOM的操作，然后在大多是情况下，应该避免在此期间更改状态，因为这可能会导致更新无限循环，该钩子在服务器端渲染期间不被调用</p></blockquote> <blockquote><h3 id="beforedestroy-销毁前"><a href="#beforedestroy-销毁前" class="header-anchor">#</a> beforeDestroy（销毁前）</h3> <p>在实例销毁之前调用，实例仍然完全可用，</p> <ol><li>这一步还可以用this来获取实例，</li> <li>一般在这一步做一些重置的操作，比如清除掉组件中的定时器 和 监听的dom事件</li></ol></blockquote> <blockquote><h3 id="destroyed-销毁后"><a href="#destroyed-销毁后" class="header-anchor">#</a> destroyed（销毁后）</h3> <p>在实例销毁之后调用，调用后，所以的事件监听器会被移出，所有的子实例也会被销毁，该钩子在服务器端渲染期间不被调用</p></blockquote> <div class="custom-block tip"><p class="custom-block-title">提示</p> <p>只有当组件在&lt; keep-alive &gt;内被切换，才会有 activated 和 deactivated 这两个钩子函数</p></div> <blockquote><h3 id="activated"><a href="#activated" class="header-anchor">#</a> activated</h3> <p>&lt; keep-alive &gt; 包裹的动态组件会被缓存，它是一个抽象组件，它自身不会渲染一个dom元素，也不会出现在父组件链中。当组件在 &lt; keep-alive &gt; 内被切换，它的 activated 和 deactivated 这两个生命周期钩子函数将会被对应执行。</p></blockquote> <blockquote><p>● 如&lt; keep-alive &gt;包裹两个组件：组件A和组件B。当第一次切换到组件A时，组件A的created和activated生命周期函数都会被执行，这时通过点击事件改变组件A的文字的颜色，在切换到组件B，这时组件A的deactivated的生命周期函数会被触发；在切换回组件A，组件A的activated生命周期函数会被触发，但是它的created生命周期函数不会被触发了，而且A组件的文字颜色也是我们之前设置过的。</p></blockquote> <blockquote><h3 id="deactivated"><a href="#deactivated" class="header-anchor">#</a> deactivated</h3></blockquote> <p><img src="/images/lifecycle.png" alt="lifecycle" title="lifecycle"></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">21 days ago</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/views/accumulate/vue2/动态修改样式.html" class="prev">
+          vue中根据某一变量动态改变html样式
+        </a></span> <span class="next"><a href="/views/accumulate/vue2/组件实例写法及注意说明.html">
+          组件实例写法及注意说明
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.468e9172.js" defer></script><script src="/assets/js/2.d6c02311.js" defer></script><script src="/assets/js/48.b8ca804f.js" defer></script>
+  </body>
+</html>
