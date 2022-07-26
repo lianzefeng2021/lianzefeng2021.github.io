@@ -3449,9 +3449,504 @@ var newPoint2 = addPoints({x:1},{x:4,y:3})
 ```
 
 ## 命名空间
+### TypeScript 命名空间
+> 命名空间一个最明确的目的就是解决重名问题。
+
+> 假设这样一种情况，当一个班上有两个名叫小明的学生时，为了明确区分它们，我们在使用名字之外，不得不使用一些额外的信息，比如他们的姓（王小明，李小明），或者他们父母的名字等等。
+
+> 命名空间定义了标识符的可见范围，一个标识符可在多个名字空间中定义，它在不同名字空间中的含义是互不相干的。
+>
+> 这样，在一个新的名字空间中可定义任何标识符，它们不会与任何已有的标识符发生冲突，因为已有的定义都处于其他名字空间中。
+
+> TypeScript 中命名空间使用 namespace 来定义，语法格式如下：
+
+``` js
+namespace SomeNameSpaceName { 
+   export interface ISomeInterfaceName {      }  
+   export class SomeClassName {      }  
+}
+```
+
+> 以上定义了一个命名空间 SomeNameSpaceName，如果我们需要在外部可以调用 SomeNameSpaceName 中的类和接口，则需要在类和接口添加 export 关键字。
+
+> 要在另外一个命名空间调用语法格式为：
+>
+>> SomeNameSpaceName.SomeClassName;
+
+> 如果一个命名空间在一个单独的 TypeScript 文件中，则应使用三斜杠 /// 引用它，语法格式如下：
+>
+>> /// <reference path = "SomeFileName.ts" />
+
+> 以下实例演示了命名空间的使用，定义在不同文件中：
+
+``` js
+// IShape.ts 文件代码：
+namespace Drawing { 
+    export interface IShape { 
+        draw(); 
+    }
+}
+```
+
+``` js
+// Circle.ts 文件代码：
+/// <reference path = "IShape.ts" /> 
+namespace Drawing { 
+    export class Circle implements IShape { 
+        public draw() { 
+            console.log("Circle is drawn"); 
+        }  
+    }
+}
+```
+
+``` js
+// Triangle.ts 文件代码：
+/// <reference path = "IShape.ts" /> 
+namespace Drawing { 
+    export class Triangle implements IShape { 
+        public draw() { 
+            console.log("Triangle is drawn"); 
+        } 
+    } 
+}
+```
+
+``` js
+// TestShape.ts 文件代码：
+/// <reference path = "IShape.ts" />   
+/// <reference path = "Circle.ts" /> 
+/// <reference path = "Triangle.ts" />  
+function drawAllShapes(shape:Drawing.IShape) { 
+    shape.draw(); 
+} 
+drawAllShapes(new Drawing.Circle());
+drawAllShapes(new Drawing.Triangle());
+```
+
+> 使用 tsc 命令编译以上代码：
+>
+>> tsc --out app.js TestShape.ts  
+
+> 得到以下 JavaScript 代码：
+
+``` js
+// JavaScript
+/// <reference path = "IShape.ts" /> 
+var Drawing;
+(function (Drawing) {
+    var Circle = /** @class */ (function () {
+        function Circle() {
+        }
+        Circle.prototype.draw = function () {
+            console.log("Circle is drawn");
+        };
+        return Circle;
+    }());
+    Drawing.Circle = Circle;
+})(Drawing || (Drawing = {}));
+/// <reference path = "IShape.ts" /> 
+var Drawing;
+(function (Drawing) {
+    var Triangle = /** @class */ (function () {
+        function Triangle() {
+        }
+        Triangle.prototype.draw = function () {
+            console.log("Triangle is drawn");
+        };
+        return Triangle;
+    }());
+    Drawing.Triangle = Triangle;
+})(Drawing || (Drawing = {}));
+/// <reference path = "IShape.ts" />   
+/// <reference path = "Circle.ts" /> 
+/// <reference path = "Triangle.ts" />  
+function drawAllShapes(shape) {
+    shape.draw();
+}
+drawAllShapes(new Drawing.Circle());
+drawAllShapes(new Drawing.Triangle());
+```
+
+> 使用 node 命令查看输出结果为：
+>
+>> $ node app.js
+Circle is drawn
+Triangle is drawn
+
+### 嵌套命名空间
+> 命名空间支持嵌套，即你可以将命名空间定义在另外一个命名空间里头。
+
+``` js
+namespace namespace_name1 { 
+    export namespace namespace_name2 {
+        export class class_name {    } 
+    } 
+}
+```
+
+> 成员的访问使用点号 . 来实现，如下实例：
+
+``` js
+// Invoice.ts 文件代码：
+namespace Runoob { 
+   export namespace invoiceApp { 
+      export class Invoice { 
+         public calculateDiscount(price: number) { 
+            return price * .40; 
+         } 
+      } 
+   } 
+}
+```
+
+``` js
+// InvoiceTest.ts 文件代码：
+/// <reference path = "Invoice.ts" />
+var invoice = new Runoob.invoiceApp.Invoice(); 
+console.log(invoice.calculateDiscount(500));
+```
+
+> 使用 tsc 命令编译以上代码：
+>
+>> tsc --out app.js InvoiceTest.ts
+
+> 得到以下 JavaScript 代码：
+
+``` js
+JavaScript
+var Runoob;
+(function (Runoob) {
+    var invoiceApp;
+    (function (invoiceApp) {
+        var Invoice = /** @class */ (function () {
+            function Invoice() {
+            }
+            Invoice.prototype.calculateDiscount = function (price) {
+                return price * .40;
+            };
+            return Invoice;
+        }());
+        invoiceApp.Invoice = Invoice;
+    })(invoiceApp = Runoob.invoiceApp || (Runoob.invoiceApp = {}));
+})(Runoob || (Runoob = {}));
+/// <reference path = "Invoice.ts" />
+var invoice = new Runoob.invoiceApp.Invoice();
+console.log(invoice.calculateDiscount(500));
+```
+
+> 使用 node 命令查看输出结果为：
+>
+>> $ node app.js
+200
 
 ## 模块
+### TypeScript 模块
+> TypeScript 模块的设计理念是可以更换的组织代码。
+
+> 模块是在其自身的作用域里执行，并不是在全局作用域，这意味着定义在模块里面的变量、函数和类等在模块外部是不可见的，除非明确地使用 export 导出它们。类似地，我们必须通过 import 导入其他模块导出的变量、函数、类等。
+
+> 两个模块之间的关系是通过在文件级别上使用 import 和 export 建立的。
+
+> 模块使用模块加载器去导入其它的模块。 在运行时，模块加载器的作用是在执行此模块代码前去查找并执行这个模块的所有依赖。 大家最熟知的JavaScript模块加载器是服务于 Node.js 的 CommonJS 和服务于 Web 应用的 Require.js。
+
+> 此外还有有 SystemJs 和 Webpack。
+
+> 模块导出使用关键字 export 关键字，语法格式如下：
+
+``` js
+// 文件名 : SomeInterface.ts 
+export interface SomeInterface { 
+   // 代码部分
+}
+```
+
+> 要在另外一个文件使用该模块就需要使用 import 关键字来导入:
+>
+>> import someInterfaceRef = require("./SomeInterface");
+
+#### 实例
+``` js
+// IShape.ts 文件代码：
+/// <reference path = "IShape.ts" /> 
+export interface IShape { 
+   draw(); 
+}
+```
+
+``` js
+// Circle.ts 文件代码：
+import shape = require("./IShape"); 
+export class Circle implements shape.IShape { 
+   public draw() { 
+      console.log("Cirlce is drawn (external module)"); 
+   } 
+}
+```
+
+``` js
+// Triangle.ts 文件代码：
+import shape = require("./IShape"); 
+export class Triangle implements shape.IShape { 
+   public draw() { 
+      console.log("Triangle is drawn (external module)"); 
+   } 
+}
+```
+
+``` js
+// TestShape.ts 文件代码：
+import shape = require("./IShape"); 
+import circle = require("./Circle"); 
+import triangle = require("./Triangle");  
+ 
+function drawAllShapes(shapeToDraw: shape.IShape) {
+   shapeToDraw.draw(); 
+} 
+ 
+drawAllShapes(new circle.Circle()); 
+drawAllShapes(new triangle.Triangle());
+```
+
+> 使用 tsc 命令编译以上代码（AMD）：
+>
+>> tsc --module amd TestShape.ts 
+
+> 得到以下 JavaScript 代码：
+
+``` js
+// IShape.js 文件代码：
+define(["require", "exports"], function (require, exports) {
+});
+```
+
+``` js
+// Circle.js 文件代码：
+define(["require", "exports"], function (require, exports) {
+   var Circle = (function () {
+      function Circle() {
+      }
+      Circle.prototype.draw = function () {
+         console.log("Cirlce is drawn (external module)");
+      };
+      return Circle;
+   })();
+   exports.Circle = Circle;
+});
+```
+
+``` js
+// Triangle.js 文件代码：
+define(["require", "exports"], function (require, exports) {
+   var Triangle = (function () {
+      function Triangle() {
+      }
+      Triangle.prototype.draw = function () {
+         console.log("Triangle is drawn (external module)");
+      };
+      return Triangle;
+   })();
+   exports.Triangle = Triangle;
+});
+```
+
+``` js
+// TestShape.js 文件代码：
+define(["require", "exports", "./Circle", "./Triangle"], 
+   function (require, exports, circle, triangle) {
+   
+   function drawAllShapes(shapeToDraw) {
+      shapeToDraw.draw();
+   }
+   drawAllShapes(new circle.Circle());
+   drawAllShapes(new triangle.Triangle());
+});
+```
+
+> 使用 tsc 命令编译以上代码（Commonjs）：
+>
+>> tsc --module commonjs TestShape.ts
+
+> 得到以下 JavaScript 代码：
+
+``` js
+// Circle.js 文件代码：
+var Circle = (function () {
+   function Circle() {
+   }
+   Circle.prototype.draw = function () {
+      console.log("Cirlce is drawn");
+   };
+   return Circle;
+})();
+ 
+exports.Circle = Circle;
+```
+
+``` js
+// Triangle.js 文件代码：
+var Triangle = (function () {
+   function Triangle() {
+   }
+   Triangle.prototype.draw = function () {
+      console.log("Triangle is drawn (external module)");
+   };
+   return Triangle;
+})();
+exports.Triangle = Triangle;
+```
+
+``` js
+// TestShape.js 文件代码：
+var circle = require("./Circle");
+var triangle = require("./Triangle");
+ 
+function drawAllShapes(shapeToDraw) {
+   shapeToDraw.draw();
+}
+drawAllShapes(new circle.Circle());
+drawAllShapes(new triangle.Triangle());
+```
+
+> 输出结果为：
+>
+>> Cirlce is drawn (external module)
+Triangle is drawn (external module)
+
 
 ## 声明文件
+> TypeScript 作为 JavaScript 的超集，在开发过程中不可避免要引用其他第三方的 JavaScript 的库。虽然通过直接引用可以调用库的类和方法，但是却无法使用TypeScript 诸如类型检查等特性功能。为了解决这个问题，需要将这些库里的函数和方法体去掉后只保留导出类型声明，而产生了一个描述 JavaScript 库和模块信息的声明文件。通过引用这个声明文件，就可以借用 TypeScript 的各种特性来使用库文件了。
+
+> 假如我们想使用第三方库，比如 jQuery，我们通常这样获取一个 id 是 foo 的元素：
+
+``` js
+$('#foo');
+// 或
+jQuery('#foo');
+```
+
+> 但是在 TypeScript 中，我们并不知道 $ 或 jQuery 是什么东西：
+
+``` js
+jQuery('#foo');
+
+// index.ts(1,1): error TS2304: Cannot find name 'jQuery'.
+```
+
+> 这时，我们需要使用 declare 关键字来定义它的类型，帮助 TypeScript 判断我们传入的参数类型对不对：
+
+``` js
+declare var jQuery: (selector: string) => any;
+
+jQuery('#foo');
+```
+
+> declare 定义的类型只会用于编译时的检查，编译结果中会被删除。
+
+> 上例的编译结果是：
+>
+>> jQuery('#foo');
+
+### 声明文件
+> 声明文件以 .d.ts 为后缀，例如：
+>
+>> runoob.d.ts
+
+> 声明文件或模块的语法格式如下：
+>
+>> declare module Module_Name {
+}
+
+> TypeScript 引入声明文件语法格式：
+>
+>> /// <reference path = " runoob.d.ts" />
+
+> 当然，很多流行的第三方库的声明文件不需要我们定义了，比如 jQuery 已经有人帮我们定义好了：[jQuery in DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jquery/index.d.ts)。
+
+### 实例
+> 以下定义一个第三方库来演示：
+
+``` js
+// CalcThirdPartyJsLib.js 文件代码：
+var Runoob;  
+(function(Runoob) {
+    var Calc = (function () { 
+        function Calc() { 
+        } 
+    })
+    Calc.prototype.doSum = function (limit) {
+        var sum = 0; 
+ 
+        for (var i = 0; i <= limit; i++) { 
+            sum = sum + i; 
+        }
+        return sum; 
+    }
+    Runoob.Calc = Calc; 
+    return Calc; 
+})(Runoob || (Runoob = {})); 
+var test = new Runoob.Calc();
+```
+
+> 如果我们想在 TypeScript 中引用上面的代码，则需要设置声明文件 Calc.d.ts，代码如下：
+
+``` js
+// Calc.d.ts 文件代码：
+declare module Runoob { 
+   export class Calc { 
+      doSum(limit:number) : number; 
+   }
+}
+```
+
+> 声明文件不包含实现，它只是类型声明，把声明文件加入到 TypeScript 中：
+
+``` js
+// CalcTest.ts 文件代码：
+/// <reference path = "Calc.d.ts" /> 
+var obj = new Runoob.Calc(); 
+// obj.doSum("Hello"); // 编译错误
+console.log(obj.doSum(10));
+```
+
+> 下面这行导致编译错误，因为我们需要传入数字参数：
+>
+>> obj.doSum("Hello");
+
+> 使用 tsc 命令来编译以上代码文件：
+>
+>> tsc CalcTest.ts
+
+> 生成的 JavaScript 代码如下：
+
+``` js
+// CalcTest.js 文件代码：
+/// <reference path = "Calc.d.ts" /> 
+var obj = new Runoob.Calc();
+//obj.doSum("Hello"); // 编译错误
+console.log(obj.doSum(10));
+```
+
+> 最后我们编写一个 runoob.html 文件，引入 CalcTest.js 文件及第三方库 CalcThirdPartyJsLib.js：
+``` js
+// 实例
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+<script src = "CalcThirdPartyJsLib.js"></script> 
+<script src = "CalcTest.js"></script> 
+</head>
+<body>
+    <h1>声明文件测试</h1>
+    <p>菜鸟测试一下。</p>
+</body>
+</html>
+```
+
+> 浏览器打开该文件输出结果如下：
+
+![这是图片](/images/ts_declare_file.jpg "Magic Gardens")
 
 ## 测验
