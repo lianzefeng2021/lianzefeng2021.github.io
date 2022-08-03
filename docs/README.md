@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /images/photo.jpg
+# heroImage: /images/photo.jpg
 # actionText: 搭建个人博客
 # actionLink: guide.html
 features:
