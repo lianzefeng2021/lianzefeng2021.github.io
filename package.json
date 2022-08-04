@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bigjs": "0.0.3",
     "countup.js": "^2.3.1",
     "dayjs": "^1.11.3",
     "element-plus": "^2.2.8",
