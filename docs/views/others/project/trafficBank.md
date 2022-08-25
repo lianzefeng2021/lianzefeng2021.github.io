@@ -5,11 +5,11 @@ title: traffic bank
 ## all the pages creat by myself
 from the create of pages to the joint investigation of apis
 
-组件：
+main components：
 el-table
 pagination
 el-upload(excel & img)
-download-link(a 标签)
+download-link(a link)
 
 ::: warning
 sigle variable may effect many place,if some one change,both of key or value,so,please pay attention!
