@@ -1,0 +1,3 @@
+---
+title: smart App
+---
