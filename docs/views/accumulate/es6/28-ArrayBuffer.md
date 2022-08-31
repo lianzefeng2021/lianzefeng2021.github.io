@@ -42,7 +42,6 @@ TypedArray 视图支持的数据类型一共有 9 种（DataView 视图支持除
 - XMLHttpRequest
 
 ## ArrayBuffer 对象
-
 ### 概述
 ArrayBuffer 对象代表储存二进制数据的一段内存，它不能直接读写，只能通过视图（TypedArray 视图和 DataView 视图)来读写，视图的作用是以指定格式解读二进制数据。
 
@@ -137,3 +136,98 @@ ArrayBuffer.isView(v) // true
 ```
 
 ## TypedArray 视图
+### 概述
+ArrayBuffer 对象作为内存区域，可以存放多种类型的数据。同一段内存，不同数据有不同的解读方式，这就叫做“视图”（view）。ArrayBuffer 有两种视图，一种是 TypedArray 视图，另一种是 DataView 视图。前者的数组成员都是同一个数据类型，后者的数组成员可以是不同的数据类型。
+
+目前，TypedArray 视图一共包括 9 种类型，每一种视图都是一种构造函数。
+
+- Int8Array：8 位有符号整数，长度 1 个字节。
+- Uint8Array：8 位无符号整数，长度 1 个字节。
+- Uint8ClampedArray：8 位无符号整数，长度 1 个字节，溢出处理不同。
+- Int16Array：16 位有符号整数，长度 2 个字节。
+- Uint16Array：16 位无符号整数，长度 2 个字节。
+- Int32Array：32 位有符号整数，长度 4 个字节。
+- Uint32Array：32 位无符号整数，长度 4 个字节。
+- Float32Array：32 位浮点数，长度 4 个字节。
+- Float64Array：64 位浮点数，长度 8 个字节。
+
+这 9 个构造函数生成的数组，统称为 TypedArray 视图。它们很像普通数组，都有 length 属性，都能用方括号运算符（[]）获取单个元素，所有数组的方法，在它们上面都能使用。普通数组与 TypedArray 数组的差异主要在以下方面。
+
+TypedArray 数组的所有成员，都是同一种类型。
+TypedArray 数组的成员是连续的，不会有空位。
+TypedArray 数组成员的默认值为 0。比如，new Array(10) 返回一个普通数组，里面没有任何成员，只是 10 个空位；new Uint8Array(10) 返回一个 TypedArray 数组，里面 10 个成员都是 0。
+TypedArray 数组只是一层视图，本身不储存数据，它的数据都储存在底层的 ArrayBuffer 对象之中，要获取底层对象必须使用 buffer 属性。
+
+### 构造函数
+TypedArray 数组提供 9 种构造函数，用来生成相应类型的数组实例。
+
+构造函数有多种用法。
+
+#### （1）TypedArray(buffer, byteOffset=0, length?)
+
+同一个ArrayBuffer对象之上，可以根据不同的数据类型，建立多个视图。
+
+``` js
+// 创建一个8字节的ArrayBuffer
+const b = new ArrayBuffer(8);
+
+// 创建一个指向b的Int32视图，开始于字节0，直到缓冲区的末尾
+const v1 = new Int32Array(b);
+
+// 创建一个指向b的Uint8视图，开始于字节2，直到缓冲区的末尾
+const v2 = new Uint8Array(b, 2);
+
+// 创建一个指向b的Int16视图，开始于字节2，长度为2
+const v3 = new Int16Array(b, 2, 2);
+```
+
+上面代码在一段长度为 8 个字节的内存（b）之上，生成了三个视图：v1、v2 和 v3。
+
+视图的构造函数可以接受三个参数：
+
+- 第一个参数（必需）：视图对应的底层 ArrayBuffer 对象。
+- 第二个参数（可选）：视图开始的字节序号，默认从 0 开始。
+- 第三个参数（可选）：视图包含的数据个数，默认直到本段内存区域结束。
+
+因此，v1、v2 和 v3 是重叠的：v1[0] 是一个 32 位整数，指向 字节 0 ～ 字节 3；v2[0] 是一个 8 位无符号整数，指向 字节 2；v3[0] 是一个 16 位整数，指向 字节 2 ～字节 3。只要任何一个视图对内存有所修改，就会在另外两个视图上反应出来。
+
+注意，byteOffset 必须与所要建立的数据类型一致，否则会报错。
+
+``` js
+const buffer = new ArrayBuffer(8);
+const i16 = new Int16Array(buffer, 1);
+// Uncaught RangeError: start offset of Int16Array should be a multiple of 2
+```
+
+上面代码中，新生成一个 8 个字节的 ArrayBuffer 对象，然后在这个对象的第一个字节，建立带符号的 16 位整数视图，结果报错。因为，带符号的 16 位整数需要两个字节，所以 byteOffset 参数必须能够被 2 整除。
+
+如果想从任意字节开始解读 ArrayBuffer 对象，必须使用 DataView 视图，因为 TypedArray 视图只提供 9 种固定的解读格式。
+
+#### （2）TypedArray(length)
+
+视图还可以不通过ArrayBuffer对象，直接分配内存而生成。
+
+``` js
+const f64a = new Float64Array(8);
+f64a[0] = 10;
+f64a[1] = 20;
+f64a[2] = f64a[0] + f64a[1];
+```
+
+上面代码生成一个 8 个成员的 Float64Array 数组（共 64 字节），然后依次对每个成员赋值。这时，视图构造函数的参数就是成员的个数。可以看到，视图数组的赋值操作与普通数组的操作毫无两样。
+
+#### （3）TypedArray(typedArray)
+
+### 数组方法
+### 字节序
+### BYTES_PER_ELEMENT 属性
+### ArrayBuffer 与字符串的互相转换
+### 溢出
+### TypedArray.prototype.buffer
+### TypedArray.prototype.byteLength，TypedArray.prototype.byteOffset
+### TypedArray.prototype.length
+### TypedArray.prototype.set()
+### TypedArray.prototype.subarray()
+### TypedArray.prototype.slice()
+### TypedArray.of()
+### TypedArray.from()
